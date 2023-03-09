@@ -1,5 +1,6 @@
 # Desafio Target
 Resolução das questões do desafio da Target Sistemas
+
 <details><summary>Questão 2</summary>
 <p>
 
