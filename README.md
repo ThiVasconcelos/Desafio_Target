@@ -45,7 +45,8 @@ public class Program {
 <details><summary>Questão 3</summary>
 <p>
 
-####Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem que desejar, que calcule e retorne:
+#### 
+    Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem que desejar, que calcule e retorne:
 • O menor valor de faturamento ocorrido em um dia do mês;
 • O maior valor de faturamento ocorrido em um dia do mês;
 • Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
@@ -104,7 +105,7 @@ faturamento.mostrar_calculos()
 <details><summary>Questão 4</summary>
 <p>
 
-#### ) Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
+#### Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
 
 SP – R$67.836,43
 RJ – R$36.678,66
@@ -140,5 +141,38 @@ print(df_percentual_mensal)
 </p>
 </details>
 
+<details><summary>Questão 5</summary>
+<p>
 
+#### Escreva um programa que inverta os caracteres de um string.
+
+IMPORTANTE:
+a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;
+b) Evite usar funções prontas, como, por exemplo, reverse;
+
+
+
+```python
+   string_normal = input("Digite um texto para ser invertido: ") 
+
+
+conjunto_caracteres = list(string_normal)
+
+i = 0
+j = len(conjunto_caracteres) - 1
+
+while i < j:
+    conjunto_caracteres[i], conjunto_caracteres[j] = conjunto_caracteres[j], conjunto_caracteres[i]
+    i += 1
+    j -= 1
+
+
+string_invertida = ''.join(conjunto_caracteres)
+
+print("O texto invertida é:", string_invertida)
+
+```
+
+</p>
+</details>
 
