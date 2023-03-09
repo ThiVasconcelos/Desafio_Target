@@ -42,3 +42,103 @@ public class Program {
 
 </p>
 </details>
+<details><summary>Questão 3</summary>
+<p>
+
+####Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem que desejar, que calcule e retorne:
+• O menor valor de faturamento ocorrido em um dia do mês;
+• O maior valor de faturamento ocorrido em um dia do mês;
+• Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
+
+IMPORTANTE:
+a) Usar o json ou xml disponível como fonte dos dados do faturamento mensal;
+b) Podem existir dias sem faturamento, como nos finais de semana e feriados. Estes dias devem ser ignorados no cálculo da média;
+
+
+```python
+   import json
+
+class Faturamento:
+
+    def __init__(self, file_path):
+        with open(file_path , 'r') as file:
+            self.data = json.load(file)
+        self.menor_faturamento = float('inf')
+        self.maior_faturamento = 0
+        self.media_faturamento = 0
+        self.dias_acima_da_media = 0
+        self.calcular_faturamento()
+
+    def calcular_faturamento(self):
+        soma_total_faturamento = 0
+        dias_com_faturamento = 0
+        for dia in self.data:
+            if dia['valor'] > 0:
+                soma_total_faturamento += dia['valor']
+                dias_com_faturamento += 1
+                if dia['valor'] < self.menor_faturamento:
+                    self.menor_faturamento = dia['valor']
+                if dia['valor'] > self.maior_faturamento:
+                    self.maior_faturamento = dia['valor']
+        self.media_faturamento = soma_total_faturamento / dias_com_faturamento
+        self.dias_acima_da_media = len([dia for dia in self.data if dia['valor'] > self.media_faturamento])
+
+    def mostrar_calculos(self):
+        print('Menor faturamento: R$', self.menor_faturamento)
+        print('Maior faturamento: R$', self.maior_faturamento)
+        print('Número de dias com faturamento acima da média mensal:', self.dias_acima_da_media)
+
+
+faturamento = Faturamento('scr\data\dados1.json')
+faturamento.mostrar_calculos()
+
+
+
+```
+
+</p>
+</details>
+
+
+
+<details><summary>Questão 4</summary>
+<p>
+
+#### ) Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
+
+SP – R$67.836,43
+RJ – R$36.678,66
+MG – R$29.229,88
+ES – R$27.165,48
+Outros – R$19.849,53
+
+Escreva um programa na linguagem que desejar onde calcule o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora.
+
+
+```python
+   import pandas as pd
+
+Faturamento_Mensal =  {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outros": 19849.53
+}
+
+Total_Faturamento_Mensal = sum(Faturamento_Mensal.values())
+df_percentual_mensal = pd.DataFrame.from_dict(Faturamento_Mensal, orient='index', columns=['Faturamento Mensal'])
+df_percentual_mensal.index.name = 'Estado'
+df_percentual_mensal.reset_index(inplace=True)
+df_percentual_mensal['Percentual Mensal'] = df_percentual_mensal['Faturamento Mensal'] / Total_Faturamento_Mensal * 100
+
+print(df_percentual_mensal)
+
+
+```
+
+</p>
+</details>
+
+
+
