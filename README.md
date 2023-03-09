@@ -8,7 +8,8 @@ escreva um programa na linguagem que desejar onde, informado um número, ele cal
 IMPORTANTE:
 Esse número pode ser informado através de qualquer entrada de sua preferência ou pode ser previamente definido no código;
     
-'''csharp
+```csharp
+    
 using System;
 
 public class Program {
@@ -37,6 +38,7 @@ public class Program {
     }
 }
                           
-'''
+```
+
 </p>
 </details>
